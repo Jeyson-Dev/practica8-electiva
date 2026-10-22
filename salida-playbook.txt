@@ -1,0 +1,121 @@
+
+PLAY [Automatizacion de servidores Ubuntu] *************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [server3]
+ok: [server2]
+ok: [server5]
+ok: [server1]
+ok: [server4]
+
+TASK [Actualizar los paquetes de APT del sistema operativo] ********************
+changed: [server4]
+changed: [server5]
+changed: [server2]
+changed: [server3]
+changed: [server1]
+
+TASK [Crear el usuario itla] ***************************************************
+changed: [server2]
+changed: [server5]
+changed: [server3]
+changed: [server1]
+changed: [server4]
+
+TASK [Crear la carpeta app] ****************************************************
+changed: [server1]
+changed: [server5]
+changed: [server2]
+changed: [server4]
+changed: [server3]
+
+TASK [Crear el archivo hola.txt en la carpeta app] *****************************
+changed: [server1]
+changed: [server3]
+changed: [server2]
+changed: [server4]
+changed: [server5]
+
+TASK [Instalar cowsay y htop] **************************************************
+changed: [server5]
+changed: [server3]
+changed: [server4]
+changed: [server1]
+changed: [server2]
+
+TASK [Probar cowsay] ***********************************************************
+ok: [server1]
+ok: [server2]
+ok: [server4]
+ok: [server3]
+ok: [server5]
+
+TASK [Mostrar resultado de cowsay] *********************************************
+ok: [server1] => {
+    "msg": [
+        " ____________________",
+        "< Hola desde server1 >",
+        " --------------------",
+        "        \\   ^__^",
+        "         \\  (oo)\\_______",
+        "            (__)\\       )\\/\\",
+        "                ||----w |",
+        "                ||     ||"
+    ]
+}
+ok: [server2] => {
+    "msg": [
+        " ____________________",
+        "< Hola desde server2 >",
+        " --------------------",
+        "        \\   ^__^",
+        "         \\  (oo)\\_______",
+        "            (__)\\       )\\/\\",
+        "                ||----w |",
+        "                ||     ||"
+    ]
+}
+ok: [server3] => {
+    "msg": [
+        " ____________________",
+        "< Hola desde server3 >",
+        " --------------------",
+        "        \\   ^__^",
+        "         \\  (oo)\\_______",
+        "            (__)\\       )\\/\\",
+        "                ||----w |",
+        "                ||     ||"
+    ]
+}
+ok: [server4] => {
+    "msg": [
+        " ____________________",
+        "< Hola desde server4 >",
+        " --------------------",
+        "        \\   ^__^",
+        "         \\  (oo)\\_______",
+        "            (__)\\       )\\/\\",
+        "                ||----w |",
+        "                ||     ||"
+    ]
+}
+ok: [server5] => {
+    "msg": [
+        " ____________________",
+        "< Hola desde server5 >",
+        " --------------------",
+        "        \\   ^__^",
+        "         \\  (oo)\\_______",
+        "            (__)\\       )\\/\\",
+        "                ||----w |",
+        "                ||     ||"
+    ]
+}
+
+PLAY RECAP *********************************************************************
+server1                    : ok=8    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+server2                    : ok=8    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+server3                    : ok=8    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+server4                    : ok=8    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+server5                    : ok=8    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

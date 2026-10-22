@@ -1,0 +1,75 @@
+x-servidor: &servidor
+  build: .
+  restart: unless-stopped
+
+services:
+  server1:
+    <<: *servidor
+    container_name: server1
+    hostname: server1
+    ports: ["2221:22"]
+    networks:
+      red_ansible:
+        ipv4_address: 172.30.0.11
+
+  server2:
+    <<: *servidor
+    container_name: server2
+    hostname: server2
+    ports: ["2222:22"]
+    networks:
+      red_ansible:
+        ipv4_address: 172.30.0.12
+
+  server3:
+    <<: *servidor
+    container_name: server3
+    hostname: server3
+    ports: ["2223:22"]
+    networks:
+      red_ansible:
+        ipv4_address: 172.30.0.13
+
+  server4:
+    <<: *servidor
+    container_name: server4
+    hostname: server4
+    ports: ["2224:22"]
+    networks:
+      red_ansible:
+        ipv4_address: 172.30.0.14
+
+  server5:
+    <<: *servidor
+    container_name: server5
+    hostname: server5
+    ports: ["2225:22"]
+    networks:
+      red_ansible:
+        ipv4_address: 172.30.0.15
+
+  # Nodo de control con Ansible. No se levanta con "docker compose up -d";
+  # se usa con: docker compose run --rm ansible ansible-playbook playbook.yml
+  ansible:
+    build: ./controller
+    image: ansible-controller
+    profiles: ["tools"]
+    volumes:
+      - ./:/ansible
+    environment:
+      ANSIBLE_CONFIG: /ansible/ansible.cfg
+    networks:
+      - red_ansible
+    depends_on:
+      - server1
+      - server2
+      - server3
+      - server4
+      - server5
+
+networks:
+  red_ansible:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
